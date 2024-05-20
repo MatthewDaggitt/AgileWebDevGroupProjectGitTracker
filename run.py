@@ -44,7 +44,7 @@ for (user, user_commits) in commits_by_usr.items():
     for id, user_commit in enumerate(user_commits[:MAX_COMMITS_TO_DISPLAY]):
         print(f"\n{id}. {user_commit.commit.message}")
     if len(user_commits) > MAX_COMMITS_TO_DISPLAY:
-        print("...")
+        print("... cutting off remaining commits")
 
 ####################
 ## Issue scraping ##
@@ -80,7 +80,7 @@ for (user, user_issues) in issues_by_usr.items():
         print(f"\t{i}. {user_issue.title}")
         print(f"\t\t{user_issue.body}")
     if len(user_issues) > MAX_ISSUES_TO_DISPLAY:
-        print("...")
+        print("... cutting off remaining issues")
 
 #################
 ## PR scraping ##
@@ -112,7 +112,7 @@ for (user, user_prs) in prs_by_usr.items():
     for i, user_pr in enumerate(user_prs[:MAX_PRS_TO_DISPLAY]):
         print(f"\t{i}. {user_pr.title}")
     if len(user_prs) > MAX_PRS_TO_DISPLAY:
-        print("...")
+        print("... cutting off remaining PRs")
 
 print(f"\n\n")
 print(f"========")
