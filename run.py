@@ -29,7 +29,8 @@ print(f"Scraping commit data...")
 all_commits = repo.get_commits()
 commits_by_usr = defaultdict(list)
 for commit in all_commits:
-    commits_by_usr[commit.author].append(commit)
+    if commit.author:
+        commits_by_usr[commit.author].append(commit)
 
 print(f"\n\n")
 print(f"============")
