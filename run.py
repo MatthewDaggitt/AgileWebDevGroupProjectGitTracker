@@ -32,6 +32,7 @@ for commit in all_commits:
     if commit.author:
         commits_by_usr[commit.author.login].append(commit)
     elif commit.commit.author:
+        # For people who have not configured their GitHub users correctly
         commits_by_usr[commit.commit.author.name].append(commit)
 
 print(f"\n\n")
