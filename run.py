@@ -30,7 +30,9 @@ all_commits = repo.get_commits()
 commits_by_usr = defaultdict(list)
 for commit in all_commits:
     if commit.author:
-        commits_by_usr[commit.author].append(commit)
+        commits_by_usr[commit.author.login].append(commit)
+    elif commit.commit.author:
+        commits_by_usr[commit.commit.author.name].append(commit)
 
 print(f"\n\n")
 print(f"============")
@@ -40,7 +42,7 @@ print(f"============")
 for (user, user_commits) in commits_by_usr.items():
     print(f"\n")
     print(f"============")
-    print(f"User: {user.login}")
+    print(f"User: {user}")
     print(f"Total number: {len(user_commits)}")
     for id, user_commit in enumerate(user_commits[:MAX_COMMITS_TO_DISPLAY]):
         print(f"\n{id}. {user_commit.commit.message}")
