@@ -40,13 +40,13 @@ print(f"============")
 print(f"Commit marks")
 print(f"============")
 
-for (user, user_commits) in commits_by_usr.items():
+for user, user_commits in commits_by_usr.items():
     print(f"\n")
     print(f"============")
     print(f"User: {user}")
     print(f"Total number: {len(user_commits)}")
     for id, user_commit in enumerate(user_commits[:MAX_COMMITS_TO_DISPLAY]):
-        print(f"\n{id}. {user_commit.commit.message}")
+        print(f"{id}. {user_commit.commit.message}")
     if len(user_commits) > MAX_COMMITS_TO_DISPLAY:
         print("... cutting off remaining commits")
 
@@ -75,14 +75,14 @@ print(f"\n\n")
 print(f"===========")
 print(f"Issue marks")
 print(f"===========")
-for (user, user_issues) in issues_by_usr.items():
+for user, user_issues in issues_by_usr.items():
     print(f"\n")
     print(f"============")
     print(f"User: {user.login}")
     print(f"Total number of issues: {len(user_issues)}")
     for i, user_issue in enumerate(user_issues[:MAX_ISSUES_TO_DISPLAY]):
         print(f"\t{i}. {user_issue.title}")
-        print(f"\t\t{user_issue.body}")
+        print(f"\t\t{user_issue.body}".replace("\n", "\n\t\t"))
     if len(user_issues) > MAX_ISSUES_TO_DISPLAY:
         print("... cutting off remaining issues")
 
@@ -108,7 +108,7 @@ print(f"\n\n")
 print(f"===================")
 print(f"Pull requests marks")
 print(f"===================")
-for (user, user_prs) in prs_by_usr.items():
+for user, user_prs in prs_by_usr.items():
     print(f"\n")
     print(f"============")
     print(f"User: {user.login}")
@@ -123,8 +123,8 @@ print(f"========")
 print(f"Teamwork")
 print(f"========")
 print("Number of other people's issues commented on:")
-for (user, count) in total_issue_comments_by_usr.items():
+for user, count in total_issue_comments_by_usr.items():
     print(f"\t {user.login}: {count}")
 print("Number of other people's PRs reviewed")
-for (user, count) in total_pr_comments_by_usr.items():
+for user, count in total_pr_comments_by_usr.items():
     print(f"\t {user.login}: {count}")
